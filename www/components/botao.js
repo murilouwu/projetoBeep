@@ -1,24 +1,22 @@
-window.onload = function(){
-    var nome = document.querySelector('#nome');
-    var name = nome.value;
-    var idade = document.querySelector('#idade');
-    var idd = int.Parse(idade.value);
-    var bt1 = document.getElementById('#b0');
-    var bt2 = document.getElementById('#b1');
-    var bt3 = document.getElementById('#b2');
+window.onload=function(){
+    bt1 = document.querySelector("#b0"); 
+    bt2 = document.querySelector("#b1");
+    bt3 = document.querySelector("#b2");
 
-    bt1.addEventListener('click' ,function(){
+    bt1.onclick = function(){
+        var nome = document.getElementById("nome").value;
         function fun1(){};
         navigator.notification.alert(
-            'Bem vindo '+name,
+            'Bem vindo '+nome,
             fun1,
             'Saudação',
             'ok'
         );
-    });
-
+    };
     bt2.onclick = function(){
-        var id = ver(idd);
+        var nome = document.getElementById("nome").value;
+        var id = document.getElementById("idade").value;
+        var idade = ver(id);
         function ver(idd){
             if(idd>0){
                 return idd;
@@ -27,11 +25,11 @@ window.onload = function(){
                 return idd;
             }
         }
-        if(id===500){
+        if(idade===500){
             navigator.vibrate(3000);
         }else{
-            if(id<18){
-                navigator.notification.bep(id);
+            if(idade<18){
+                navigator.notification.bep(idade);
             }else{
                 function res(buttonIndex){
                     if(buttonIndex===1){
@@ -41,7 +39,7 @@ window.onload = function(){
                     }
                 }
                 navigator.notification.confirm(
-                    name+' Você é homem ou mulher',
+                    nome+' Você é homem ou mulher',
                     res,
                     'Genero',
                     ['Homem','Mulher']
@@ -49,8 +47,7 @@ window.onload = function(){
             }
         }
     };
-
-    bt3.onclick = function(){
+    bt2.onclick = function(){
         function exit(buttonIndex) {
             if(buttonIndex===1){
                 navigator.vibrate(3000);
